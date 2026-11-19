@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Adicione uma imagem do produto">
+  <rect width="800" height="1000" fill="#f3f3f1"/>
+  <rect x="306" y="385" width="188" height="160" rx="18" fill="none" stroke="#a1a1aa" stroke-width="8"/>
+  <circle cx="441" cy="433" r="17" fill="#a1a1aa"/>
+  <path d="M325 520l49-53 35 33 25-24 40 44" fill="none" stroke="#a1a1aa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="602" fill="#71717a" text-anchor="middle" font-family="Arial,sans-serif" font-size="26">Adicione uma imagem</text>
+</svg>
