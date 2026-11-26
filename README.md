@@ -59,11 +59,10 @@ Instalações anteriores com `ADMIN_USERNAME`, `ADMIN_PASSWORD` (mínimo de 12 c
 
 - `src/catalog` e `src/projects`: produto, identidade e armazenamento dos projetos.
 - `src/plugins`: descrições dos providers internos e contratos preparatórios para plugins.
-- `src/storefront` e `src/admin`: página compartilhada e editor com prévia.
+- `components/base`: componentes reutilizáveis, página compartilhada e editor com prévia.
 - `src/payments`: contratos e pedidos; o catálogo de providers está vazio.
 - `src/security`: sessões e limites.
 - `src/integrations/google-sheets`: sincronização assíncrona da fila local.
-- `components/base`: controles reutilizáveis do frontend.
 
 O CSS e as principais seções foram adaptados do tema fornecido. Ainda é necessária uma comparação visual sistemática em desktop e mobile para afirmar equivalência 1:1; alguns ícones, estados e detalhes do tema original foram recriados. Novos projetos começam sem avaliações e usam uma imagem provisória até o envio dos arquivos do produto.
 

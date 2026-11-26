@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/src/security/auth";
 import { products } from "@/src/catalog/sqlite-repository";
-import { Editor } from "@/src/admin/editor";
+import { Editor } from "@/components/base/editor";
 import "../../../theme.css";
 export default async function EditProduct({
   params,

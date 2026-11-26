@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { isIP } from "node:net";
 import { revalidatePath } from "next/cache";
-import { productSchema } from "@/src/catalog/model";
+import { defaultProduct, productSchema } from "@/src/catalog/model";
 import { products } from "@/src/catalog/sqlite-repository";
 import { shopOrigin } from "@/src/security/request";
 import { allowLogin } from "@/src/security/rate-limit";
@@ -59,6 +59,44 @@ export async function login(form: FormData) {
 export async function logout() {
   await endSession();
   redirect("/admin/login");
+}
+export async function createFirstProject(input: {
+  name: string;
+  slug: string;
+  domain: string;
+  seoTitle: string;
+  seoDescription: string;
+  logo: string;
+  mediaId: string;
+}): Promise<{ error?: string }> {
+  await requireAdmin();
+  if (products.list().length)
+    return {
+      error: "Já existe um projeto. Acesse o painel para criar outros.",
+    };
+  const name = typeof input.name === "string" ? input.name.trim() : "";
+  if (!name || name.length > 120)
+    return { error: "Informe um nome para o projeto com até 120 caracteres." };
+  if (
+    input.logo &&
+    (!input.mediaId || !input.logo.startsWith(`/media/${input.mediaId}/`))
+  )
+    return { error: "Logo inválida. Envie a imagem novamente." };
+  const result = await saveProduct({
+    ...defaultProduct,
+    projectName: name,
+    title: name,
+    brandName: name,
+    logo: input.logo || "",
+    mediaId: input.mediaId || "",
+    slug: input.slug,
+    domain: input.domain,
+    seoTitle: input.seoTitle,
+    seoDescription: input.seoDescription,
+    options: [{ ...defaultProduct.options[0], name }],
+  });
+  if (!result.error) revalidatePath("/admin", "layout");
+  return result;
 }
 export async function saveProduct(
   input: unknown,

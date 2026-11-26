@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/src/security/auth";
 import { products } from "@/src/catalog/sqlite-repository";
-import { Brand, Panel } from "@/components/base";
+import { Panel } from "@/components/base";
 
 export default async function GatewayPage({
   searchParams,
@@ -15,11 +15,7 @@ export default async function GatewayPage({
   if (query.project && !project) notFound();
   return (
     <main className="admin">
-      <header className="app-topbar">
-        <Brand />
-        <span className="topbar-label">CONFIGURAÇÕES</span>
-      </header>
-      <Link href={project ? `/admin/projetos/${project.slug}` : "/admin"}>
+      <Link href={project ? `/admin/projetos/${project.slug}` : "/admin/dashboard"}>
         ← {project ? "Projeto" : "Projetos"}
       </Link>
       <div className="page-intro">

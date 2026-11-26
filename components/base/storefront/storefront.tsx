@@ -365,7 +365,12 @@ export function Storefront({
   supportsCard?: boolean;
 }) {
   const router = useRouter();
-  const [option, setOption] = useState(0),
+  const [option, setOption] = useState(() =>
+      Math.max(
+        0,
+        product.options.findIndex((item) => item.available),
+      ),
+    ),
     [menu, setMenu] = useState(false),
     [sticky, setSticky] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -399,7 +404,8 @@ export function Storefront({
   }, [preview]);
   function buy(event: FormEvent) {
     event.preventDefault();
-    if (!preview && checkoutEnabled) router.push(checkout);
+    if (!preview && checkoutEnabled && selected.available)
+      router.push(checkout);
   }
   return (
     <div
@@ -565,6 +571,7 @@ export function Storefront({
                         value={i}
                         data-gallery-key={i === 1 ? "190" : "100"}
                         checked={i === option}
+                        disabled={!o.available}
                         onChange={() => setOption(i)}
                       />
                       <label
@@ -574,6 +581,7 @@ export function Storefront({
                         <span className="variant-option__heading">
                           <span className="variant-option__title">
                             {o.name}
+                            {!o.available && " · Indisponível"}
                           </span>
                           {o.badge && (
                             <span className="variant-option__badge">
@@ -616,7 +624,9 @@ export function Storefront({
                   name="add"
                   className="button button--primary"
                   data-add-button
-                  disabled={!preview && !checkoutEnabled}
+                  disabled={
+                    !selected.available || (!preview && !checkoutEnabled)
+                  }
                 >
                   <CartIcon />
                   <span>{product.buttonText}</span>
@@ -666,7 +676,7 @@ export function Storefront({
                           onChange={(e) => setOption(Number(e.target.value))}
                         >
                           {product.options.map((o, i) => (
-                            <option value={i} key={i}>
+                            <option value={i} key={i} disabled={!o.available}>
                               {o.name}
                             </option>
                           ))}
@@ -720,7 +730,7 @@ export function Storefront({
                   className="button button--primary product-sticky-atc__button"
                   type="button"
                   tabIndex={sticky ? 0 : -1}
-                  disabled={!checkoutEnabled}
+                  disabled={!checkoutEnabled || !selected.available}
                   onClick={() => buttonRef.current?.click()}
                 >
                   <CartIcon />

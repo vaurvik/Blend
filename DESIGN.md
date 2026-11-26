@@ -2,16 +2,16 @@
 version: alpha
 name: Shopify Inspired
 website: "https://www.shopify.com"
-description: An inspired interpretation of Shopify's design language — a cinematic commerce platform that runs two parallel design tracks. The marketing-hero and product-narrative pages live on near-black canvases with full-bleed photography of merchants, giant Neue Haas Grotesk display type at thin weights, and a single black-pill CTA stroked in white. The transactional pages (pricing, signup, dashboards) flip to a cream-mint canvas with pastel aloe and pistachio greens, the same pill button vocabulary, and Inter for UI body. The two tracks share typographic DNA but diverge sharply in canvas polarity — and that choice is the brand.
+description: An inspired interpretation of Shopify's design language — a cinematic commerce platform that runs two parallel design tracks. The marketing-hero and product-narrative pages live on near-black canvases with full-bleed photography of merchants, giant Neue Haas Grotesk display type at thin weights, and a single black-pill CTA stroked in white. The transactional pages (pricing, signup, dashboards) flip to a cream canvas with soft sky blue accents, the same pill button vocabulary, and Inter for UI body. The two tracks share typographic DNA but diverge sharply in canvas polarity — and that choice is the brand.
 
 seo:
-  title: "Shopify Design System — Thin Neue Haas Type and Aloe Green"
-  metaDescription: "Shopify's cinematic black track and cream checkout track, aloe #c1fbd4 accents and Neue Haas Grotesk at weight 330, for React, Claude or Cursor."
+  title: "Shopify Design System — Thin Neue Haas Type and Sky Blue"
+  metaDescription: "Shopify's cinematic black track and cream checkout track, sky 10 #eaf7ff accents and Neue Haas Grotesk at weight 330, for React, Claude or Cursor."
   highlights:
     - "Two-canvas system — pure black #000000 for cinematic marketing, white #ffffff and cream #fbfbf5 for transactional surfaces, never blended"
     - "Thin-weight display type — Neue Haas Grotesk Display at weight 330 for every headline, including the 96px hero with 2.4px positive tracking"
     - "Pill-only button shape — every CTA uses rounded 9999px geometry across both tracks; rounded rectangles do not exist for buttons"
-    - "Mint accents scoped to light — aloe #c1fbd4 and pistachio #d4f9e0 appear only on transactional pages, never on the cinematic black hero"
+    - "Sky blue accents scoped to light — sky 10 #eaf7ff and sky 20 #ddf2ff appear only on transactional pages, never on the cinematic black hero"
     - "Universal ss03 stylistic set — the OpenType feature is enabled across NHG, Inter, and ui-monospace as a character-level brand signature"
   tags:
     - "E-commerce & Retail"
@@ -20,9 +20,9 @@ seo:
     name: "Dov Azencot"
     url: "https://x.com/dovazencot"
   opening: |
-    Shopify's public design language reads like two design systems sharing one wordmark. The marketing-hero and product-narrative pages live on a pure-black canvas (#000000) with full-bleed merchant photography, giant Neue Haas Grotesk Display headlines at weight 330, and a single white-stroked black-pill CTA per band. The transactional pages — pricing, signup, dashboards — flip to white #ffffff and an off-white cream #fbfbf5, with the same pill button vocabulary in inverse polarity and pastel mint #c1fbd4 and pistachio #d4f9e0 accents reserved exclusively for this lighter track. The two surfaces never blend. That polarity split is the brand's loudest design decision, more identifying than any single color or shape.
+    Shopify's public design language reads like two design systems sharing one wordmark. The marketing-hero and product-narrative pages live on a pure-black canvas (#000000) with full-bleed merchant photography, giant Neue Haas Grotesk Display headlines at weight 330, and a single white-stroked black-pill CTA per band. The transactional pages — pricing, signup, dashboards — flip to white #ffffff and an off-white cream #fbfbf5, with the same pill button vocabulary in inverse polarity and pastel sky 10 #eaf7ff and sky 20 #ddf2ff accents reserved exclusively for this lighter track. The two surfaces never blend. That polarity split is the brand's loudest design decision, more identifying than any single color or shape.
 
-    This page packages the full spec into one DESIGN.md file built on the Google Labs spec. Inside: 19 color tokens grouped into brand accents, surface ladders, shade scales, and text tones; 15 typography tokens across Neue Haas Grotesk Display (display, headlines), Inter Variable (UI body, captions), and ui-monospace (code); 6 corner radius values topped by the 9999px pill that every button uses; 8 spacing tokens on an 8px base scale; and 20 components covering buttons, pricing cards, cinematic photo frames, mint pills, light and dark nav bars, and dual-canvas footers.
+    This page packages the full spec into one DESIGN.md file built on the Google Labs spec. Inside: 19 color tokens grouped into brand accents, surface ladders, shade scales, and text tones; 15 typography tokens across Neue Haas Grotesk Display (display, headlines), Inter Variable (UI body, captions), and ui-monospace (code); 6 corner radius values topped by the 9999px pill that every button uses; 8 spacing tokens on an 8px base scale; and 20 components covering buttons, pricing cards, cinematic photo frames, sky blue pills, light and dark nav bars, and dual-canvas footers.
 
     Feed this file to Claude, Cursor, or GitHub Copilot and the agent produces React components that respect the two-canvas split, the thin 330 display weight, and the pill-only button shape — not a generic e-commerce theme. Or reference the tokens directly: every hex, font, radius, and spacing value lives as a quoted string you can paste into Tailwind config or CSS variables. The system is worth studying precisely because of its discipline: one shape for buttons, one weight for display, one canvas per page intent. Shopify uses constraint as a brand voice.
   related:
@@ -38,7 +38,7 @@ seo:
   questions:
     - id: "primary-color"
       title: "What is Shopify's primary brand color?"
-      answer: "Shopify's brand operates on a polarity rather than a single accent. The cinematic marketing track uses pure black #000000 as canvas with white #ffffff type and white-stroked outline pills. The transactional track flips to white #ffffff and cream #fbfbf5 canvas with black #000000 ink and a featured aloe #c1fbd4 mint pill on pricing pages. Pistachio #d4f9e0 appears as a band fill on the light track. There is no purple, blue, or gradient in the system — green is the only chromatic accent and it is scoped strictly to the light surfaces."
+      answer: "Shopify's brand operates on a polarity rather than a single accent. The cinematic marketing track uses pure black #000000 as canvas with white #ffffff type and white-stroked outline pills. The transactional track flips to white #ffffff and cream #fbfbf5 canvas with black #000000 ink and a featured sky 10 #eaf7ff pill on pricing pages. Sky 20 #ddf2ff appears as a band fill on the light track. There is no purple or gradient in the system — blue is the only chromatic accent and it is scoped strictly to the light surfaces."
     - id: "typography"
       title: "What typography does Shopify use, and what should I use if Neue Haas Grotesk isn't available?"
       answer: "Shopify runs Neue Haas Grotesk Display at weight 330 for every display and headline role — the thinness is the brand's typographic signature, from the 96px hero down to 18px eyebrows. UI body, button labels, and captions use Inter Variable at weights 420–550. Code blocks use ui-monospace, the system mono. If Neue Haas Grotesk is unavailable, Helvetica Now Display at light weights or Inter Display at light weights are the closest substitutes — never default Helvetica Neue, which is too heavy. The OpenType ss03 stylistic set is enabled across all three families as a character-level unifier."
@@ -47,10 +47,10 @@ seo:
       answer: "The split lets each page do its job. The cinematic black track treats marketing surfaces like a high-end print spread — full-bleed merchant photography, 128–192px of vertical air between bands, and one CTA per scroll. The light track collapses to 48–64px section padding because pricing, signup, and dashboard users are scanning and comparing. Mixing the two would dilute both: cinematic black with dense pricing tables feels overwhelming, and white with edge-bleeding merchant photos feels generic. The two whitespace philosophies are part of the brand voice."
     - id: "pill-buttons"
       title: "Why are all Shopify buttons pill-shaped?"
-      answer: "The 9999px pill radius is the only button shape in the entire system across both canvas tracks. It maintains identity when everything else (canvas, text color, border weight) flips between cinematic and transactional contexts. The black canvas gets a transparent pill with a 2px white stroke; the light canvas gets a solid black pill with white text or an aloe #c1fbd4 mint pill for the featured pricing tier. Pressed state lifts to shade-70 #3f3f46. The shape is non-negotiable — new variants change fill, border, or canvas, never the radius."
+      answer: "The 9999px pill radius is the only button shape in the entire system across both canvas tracks. It maintains identity when everything else (canvas, text color, border weight) flips between cinematic and transactional contexts. The black canvas gets a transparent pill with a 2px white stroke; the light canvas gets a solid black pill with white text or a sky 10 #eaf7ff pill for the featured pricing tier. Pressed state lifts to shade-70 #3f3f46. The shape is non-negotiable — new variants change fill, border, or canvas, never the radius."
     - id: "use-in-project"
       title: "Can I use this DESIGN.md to build my own React e-commerce site?"
-      answer: "Yes — the file feeds into Claude, Cursor, or any AI tool that reads structured design tokens. The agent will reproduce Shopify's discipline: two-canvas split, thin 330 display weight, pill-only buttons, mint scoped to light surfaces. You can also paste the tokens directly into Tailwind config or CSS variables — every color hex, font stack, radius value, and component definition lives as a quoted YAML string. The 20 components map cleanly onto shadcn/ui primitives: pill buttons swap shadcn Button radius to 9999px, pricing cards use Card with rounded-lg and 32px padding, and the dual nav bars are straightforward header components."
+      answer: "Yes — the file feeds into Claude, Cursor, or any AI tool that reads structured design tokens. The agent will reproduce Shopify's discipline: two-canvas split, thin 330 display weight, pill-only buttons, sky blue scoped to light surfaces. You can also paste the tokens directly into Tailwind config or CSS variables — every color hex, font stack, radius value, and component definition lives as a quoted YAML string. The 20 components map cleanly onto shadcn/ui primitives: pill buttons swap shadcn Button radius to 9999px, pricing cards use Card with rounded-lg and 32px padding, and the dual nav bars are straightforward header components."
     - id: "known-gaps"
       title: "What's missing from this DESIGN.md spec?"
       answer: "Several things, captured at the bottom of the file: hover-state colors for pill buttons (the system lifts to shade-70 #3f3f46 on press but hover styling is more subtle), loading skeletons, the dashboard analytics chart palette, full input error-state combinations, the in-product Polaris admin design system (a separate sub-system used inside the merchant admin), and motion specifications for the cinematic photography crossfades. The spec captures the marketing site and pricing flow — roughly the surfaces a visitor sees before signing up."
@@ -72,12 +72,12 @@ colors:
   shade-70: "#3f3f46"
   hairline-light: "#e4e4e7"
   hairline-dark: "#1e2c31"
-  aloe-10: "#c1fbd4"
-  pistachio-10: "#d4f9e0"
-  link-cool-1: "#9dabad"
+  sky-10: "#eaf7ff"
+  sky-20: "#ddf2ff"
+  sky-5: "#f3faff"
   link-cool-2: "#9797a2"
   link-cool-3: "#bdbdca"
-  link-mint: "#99b3ad"
+  sky-30: "#c7e9ff"
 
 typography:
   display-xxl:
@@ -229,8 +229,8 @@ components:
     typography: "{typography.body-md}"
     rounded: "{rounded.pill}"
     padding: 12px 24px
-  button-aloe-pill:
-    backgroundColor: "{colors.aloe-10}"
+  button-sky-pill:
+    backgroundColor: "{colors.sky-10}"
     textColor: "{colors.ink}"
     typography: "{typography.body-md}"
     rounded: "{rounded.pill}"
@@ -248,7 +248,7 @@ components:
     rounded: "{rounded.lg}"
     padding: 32px
   card-pricing-featured:
-    backgroundColor: "{colors.aloe-10}"
+    backgroundColor: "{colors.sky-10}"
     textColor: "{colors.ink}"
     typography: "{typography.body-md}"
     rounded: "{rounded.lg}"
@@ -259,8 +259,8 @@ components:
     typography: "{typography.body-lg}"
     rounded: "{rounded.lg}"
     padding: 32px
-  card-pistachio-band:
-    backgroundColor: "{colors.pistachio-10}"
+  card-sky-band:
+    backgroundColor: "{colors.sky-20}"
     textColor: "{colors.ink}"
     typography: "{typography.body-md}"
     rounded: "{rounded.lg}"
@@ -271,8 +271,8 @@ components:
     typography: "{typography.body-md}"
     rounded: "{rounded.xl}"
     padding: 0px
-  pill-tag-mint:
-    backgroundColor: "{colors.aloe-10}"
+  pill-tag-sky:
+    backgroundColor: "{colors.sky-10}"
     textColor: "{colors.ink}"
     typography: "{typography.eyebrow-cap}"
     rounded: "{rounded.pill}"
@@ -319,7 +319,7 @@ components:
 
 Shopify's public design language runs two parallel tracks that share typographic DNA and a single button vocabulary, but diverge sharply in canvas polarity. The marketing track lives on `{colors.canvas-night}` (#000000) — full-bleed merchant photography, giant `{typography.display-xxl}` headlines in Neue Haas Grotesk Display set at weight 330 (a thin, almost editorial cut), and a single CTA: a white-stroked black pill rendered as `button-outline-on-dark`. The pages read like a high-end print spread: lots of black, lots of negative space, photography that doesn't compete with text, and one and only one action per band.
 
-The transactional track flips to `{colors.canvas-light}` (#ffffff) and `{colors.canvas-cream}` (#fbfbf5 — an off-white that's barely warmer than pure white). Pricing tiers, comparison tables, and signup flows sit on this lighter canvas, with the same pill button system in inverse polarity (a solid black pill with white text, or an aloe `{colors.aloe-10}` #c1fbd4 pill for the featured "Start free trial" tier). The mint accents `{colors.aloe-10}` (#c1fbd4) and `{colors.pistachio-10}` (#d4f9e0) appear exclusively on the light track — never on the cinematic dark hero pages.
+The transactional track flips to `{colors.canvas-light}` (#ffffff) and `{colors.canvas-cream}` (#fbfbf5 — an off-white that's barely warmer than pure white). Pricing tiers, comparison tables, and signup flows sit on this lighter canvas, with the same pill button system in inverse polarity (a solid black pill with white text, or a sky 10 `{colors.sky-10}` #eaf7ff pill for the featured "Start free trial" tier). The sky blue accents `{colors.sky-10}` (#eaf7ff) and `{colors.sky-20}` (#ddf2ff) appear exclusively on the light track — never on the cinematic dark hero pages.
 
 Typography splits across three families. **Neue Haas Grotesk Display** at thin weights 330–500 handles every display, headline, and editorial moment — the brand's identity is that thin display cut. **Inter Variable** at weights 420–550 handles every UI body, button label, caption, and form field — utility text that doesn't fight the display. **ui-monospace** appears only in code blocks and rare technical eyebrows. The OpenType `ss03` stylistic set is enabled across all three families — a character-level brand signature applied universally.
 
@@ -327,7 +327,7 @@ Typography splits across three families. **Neue Haas Grotesk Display** at thin w
 - Two-canvas system: `{colors.canvas-night}` (#000000) for cinematic marketing, `{colors.canvas-light}` (#ffffff) and `{colors.canvas-cream}` (#fbfbf5) for transactional surfaces — never blended on the same page.
 - Pill-shape (`{rounded.pill}` 9999px) is the only button shape across both tracks; rounded rectangles do not exist for buttons.
 - Thin-weight 330 display typography is the signature; `{typography.display-xxl}` at 96px / weight 330 is the brand's loudest visual.
-- Aloe `{colors.aloe-10}` (#c1fbd4) and pistachio `{colors.pistachio-10}` (#d4f9e0) are reserved for the light track — they signal commerce, growth, transactional success.
+- Sky 10 `{colors.sky-10}` (#eaf7ff) and sky 20 `{colors.sky-20}` (#ddf2ff) are reserved for the light track — they signal commerce, growth, transactional success.
 - Photography is full-bleed, edge-to-edge, never inset in cards on the cinematic track; merchants and storefront imagery do the heavy lifting that gradients and illustrations would do elsewhere.
 - The OpenType `ss03` stylistic set is enabled across every text role — a character-level unifier that tracks across both canvas polarities.
 - Tight letter-spacing on display sizes (2.4px positive tracking on 96px display) gives the thin weight extra optical air.

@@ -4,13 +4,17 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { siteForHost, siteMetadata } from "@/src/catalog/sites";
 import { shopOrigin } from "@/src/security/request";
-import { Storefront } from "@/src/storefront/storefront";
+import { Storefront } from "@/components/base/storefront/storefront";
 import { settings } from "@/src/payments/config";
 import "./theme.css";
 import { Brand } from "@/components/base";
 import { hasAdmin } from "@/src/security/auth";
 import { localSetupAccess } from "@/src/security/setup-access";
 import { redirect } from "next/navigation";
+import { getPublishedTheme } from "@/src/themes/repository";
+import { listCatalogProducts } from "@/src/catalog/project-catalog-repository";
+import { createTemplateContext } from "@/src/themes/template-context";
+import { PublishedTheme } from "@/components/base/published-theme";
 export const dynamic = "force-dynamic";
 export async function generateMetadata() {
   const site = siteForHost((await headers()).get("host"));
@@ -21,7 +25,19 @@ export default async function Home() {
   if (!hasAdmin() && localSetupAccess(requestHeaders)) redirect("/admin/setup");
   const host = requestHeaders.get("host");
   const site = siteForHost(host);
-  if (site)
+  if (site) {
+    const published = getPublishedTheme(site.mediaId);
+    if (published)
+      return (
+        <PublishedTheme
+          theme={published}
+          context={createTemplateContext(
+            site,
+            listCatalogProducts(site),
+            site.mediaId,
+          )}
+        />
+      );
     return (
       <Storefront
         product={site}
@@ -29,6 +45,7 @@ export default async function Home() {
         supportsCard={false}
       />
     );
+  }
   if (
     shopOrigin() &&
     host?.toLowerCase() !== new URL(shopOrigin()!).host.toLowerCase()
@@ -39,7 +56,7 @@ export default async function Home() {
     <main className="home">
       <header className="app-topbar">
         <Brand />
-        <Link className="admin-button" href="/admin">
+        <Link className="admin-button" href="/admin/dashboard">
           Administração ↗
         </Link>
       </header>

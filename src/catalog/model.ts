@@ -13,8 +13,9 @@ export const optionSchema = z
     name: z.string().trim().min(1).max(100),
     detail: z.string().max(200),
     badge: z.string().max(50),
-    price: z.number().int().positive().max(100000000),
-    originalPrice: z.number().int().positive().max(100000000),
+    price: z.number().int().min(0).max(100000000),
+    originalPrice: z.number().int().min(0).max(100000000),
+    available: z.boolean().default(true),
   })
   .refine(
     (v) => v.originalPrice >= v.price,
@@ -173,6 +174,7 @@ export const defaultProduct: Product = {
       badge: "",
       price: 1000,
       originalPrice: 1000,
+      available: true,
     },
   ],
   routineTitle: "Conheça seu produto",

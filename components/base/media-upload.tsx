@@ -4,10 +4,14 @@ export function MediaUpload({
   onUploaded,
   accept = "image/png,image/jpeg,image/webp,video/mp4",
   siteId,
+  getSiteId,
+  onBusyChange,
 }: {
   onUploaded: (url: string) => void;
   accept?: string;
   siteId?: string;
+  getSiteId?: () => string;
+  onBusyChange?: (busy: boolean) => void;
 }) {
   const [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
@@ -15,11 +19,13 @@ export function MediaUpload({
     const file = e.target.files?.[0];
     if (!file) return;
     setBusy(true);
+    onBusyChange?.(true);
     setError("");
     try {
       const data = new FormData();
       data.set("file", file);
-      if (siteId) data.set("site", siteId);
+      const targetSite = siteId || getSiteId?.();
+      if (targetSite) data.set("site", targetSite);
       const res = await fetch("/api/admin/media", {
         method: "POST",
         body: data,
@@ -34,6 +40,7 @@ export function MediaUpload({
       setError(err instanceof Error ? err.message : "Erro no envio");
     } finally {
       setBusy(false);
+      onBusyChange?.(false);
       e.target.value = "";
     }
   }

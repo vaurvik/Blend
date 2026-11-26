@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/src/security/auth";
 import { products } from "@/src/catalog/sqlite-repository";
-import { Brand, Panel } from "@/components/base";
+import { Panel } from "@/components/base";
 
 export const dynamic = "force-dynamic";
 export default async function ProjectPage({
@@ -15,17 +15,23 @@ export default async function ProjectPage({
   if (!project) notFound();
   return (
     <main className="admin">
-      <header className="app-topbar">
-        <Brand />
-        <span className="topbar-label">PROJETO</span>
-      </header>
-      <Link href="/admin">← Projetos</Link>
+      <Link href="/admin">← Trocar projeto</Link>
       <div className="page-intro">
         <span className="eyebrow-label">PROJETO</span>
         <h1>{project.projectName || project.title}</h1>
         <p>{project.domain || `/${project.slug}`}</p>
       </div>
       <div className="dashboard-grid">
+        <Panel className="dashboard-card">
+          <span className="eyebrow-label">CATÁLOGO</span>
+          <h2>Produtos</h2>
+          <p>Gerencie os produtos e variantes deste projeto.</p>
+          <Link
+            href={`/admin/projetos/${encodeURIComponent(project.slug)}/produtos`}
+          >
+            Gerenciar produtos →
+          </Link>
+        </Panel>
         <Panel className="dashboard-card">
           <span className="eyebrow-label">LOJA</span>
           <h2>Site e conteúdo</h2>
@@ -36,11 +42,13 @@ export default async function ProjectPage({
         </Panel>
         <Panel className="dashboard-card">
           <span className="eyebrow-label">TEMPLATE</span>
-          <h2>Template de produto</h2>
-          <p>
-            Template de produto compartilhado, personalizado para este projeto.
-          </p>
-          <Link href={`/admin/editar/${project.slug}`}>Personalizar →</Link>
+          <h2>Temas</h2>
+          <p>Crie rascunhos e construa páginas no editor visual.</p>
+          <Link
+            href={`/admin/projetos/${encodeURIComponent(project.slug)}/temas`}
+          >
+            Gerenciar temas →
+          </Link>
         </Panel>
         <Panel className="dashboard-card">
           <span className="eyebrow-label">PLUGIN DE PAGAMENTO</span>

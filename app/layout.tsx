@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Blend",
+  title: "Blend / Dashboard",
   description: "Loja de produtos",
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: [{ url: "/api/branding/icon?v=blend-5", type: "image/png" }] },
 };
 export default function RootLayout({
   children,

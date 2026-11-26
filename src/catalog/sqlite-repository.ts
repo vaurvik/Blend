@@ -5,6 +5,28 @@ import { join } from "node:path";
 import { randomUUID } from "node:crypto";
 import { writeProjectSnapshot } from "@/src/projects/storage";
 import { productSchema, type Product, type ProductRepository } from "./model";
+import { listCatalogProducts } from "./project-catalog-repository";
+
+function withCatalogProduct(project: Product): Product {
+  const primary = listCatalogProducts(project).find(
+    (product) => product.id === project.mediaId,
+  );
+  if (!primary) return project;
+  return {
+    ...project,
+    title: primary.title,
+    options: primary.variants
+      .slice(0, 2)
+      .map((variant, index) => ({
+        name: variant.title,
+        detail: project.options[index]?.detail || "",
+        badge: project.options[index]?.badge || "",
+        price: variant.price,
+        originalPrice: variant.compareAtPrice ?? variant.price,
+        available: variant.available,
+      })),
+  };
+}
 const dir = process.env.SHOP_DATA_DIR || join(process.cwd(), "data");
 mkdirSync(dir, { recursive: true });
 const db = new DatabaseSync(join(dir, "shop.sqlite"));
@@ -67,17 +89,32 @@ class SqliteProductRepository implements ProductRepository {
       db.prepare("SELECT data FROM products ORDER BY slug").all() as {
         data: string;
       }[]
-    ).map((row) => productSchema.parse(JSON.parse(row.data)));
+    ).map((row) =>
+      withCatalogProduct(productSchema.parse(JSON.parse(row.data))),
+    );
   }
   get(slug: string): Product | null {
     this.migrate();
     const row = db
       .prepare("SELECT data FROM products WHERE slug = ?")
       .get(slug) as { data: string } | undefined;
-    return row ? productSchema.parse(JSON.parse(row.data)) : null;
+    return row
+      ? withCatalogProduct(productSchema.parse(JSON.parse(row.data)))
+      : null;
   }
   save(product: Product, originalSlug?: string): void {
     this.migrate();
+    const current = originalSlug ? this.get(originalSlug) : null;
+    if (current)
+      product = {
+        ...product,
+        title: current.title,
+        options: current.options.map((option, index) => ({
+          ...option,
+          detail: product.options[index]?.detail ?? option.detail,
+          badge: product.options[index]?.badge ?? option.badge,
+        })),
+      };
     db.exec("BEGIN IMMEDIATE");
     try {
       const rows = db.prepare("SELECT slug, data FROM products").all() as {

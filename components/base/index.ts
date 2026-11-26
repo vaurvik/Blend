@@ -3,3 +3,8 @@ export { Field, Input, Select, Textarea } from "./fields";
 export { Panel } from "./panel";
 export { MediaUpload } from "./media-upload";
 export { Brand } from "./brand";
+export { SidebarNav } from "./sidebar-nav";
+export { SidebarSearch } from "./sidebar-search";
+export { BaseCanvas } from "./base-canvas";
+export type { BaseCanvasProps, CanvasCamera, CanvasPoint } from "./base-canvas";
+export type { SidebarNavItem, SidebarNavLink } from "./sidebar-nav";

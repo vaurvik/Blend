@@ -130,8 +130,21 @@ test(
       const cookie = success.headers.get("set-cookie")?.split(";")[0];
       assert.ok(cookie?.startsWith("shop_admin="));
       assert.equal(
-        (await fetch(`${origin}/admin`, { headers: { cookie } })).status,
+        (await fetch(`${origin}/admin/dashboard`, { headers: { cookie } }))
+          .status,
         200,
+      );
+      const firstProject = await fetch(`${origin}/admin/primeiro-projeto`, {
+        headers: { cookie },
+      });
+      assert.match(await firstProject.text(), /Dê um nome à sua ideia/);
+      const dashboardRedirect = await fetch(`${origin}/admin/dashboard`, {
+        headers: { cookie },
+        redirect: "manual",
+      });
+      assert.equal(
+        dashboardRedirect.headers.get("location"),
+        "/admin/primeiro-projeto",
       );
       const uploadForm = new FormData();
       uploadForm.set(
